@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Raleway";
+  font-weight: 800;
+  src: local("Ubuntu"), url(./fonts/Raleway-Bold.ttf);
+}
+@font-face {
+  font-family: "Raleway";
+  font-weight: 400;
+  src: local("Ubuntu"), url(./fonts/Raleway-Regular.ttf);
+}
+@font-face {
+  font-family: "Raleway";
+  font-weight: 600;
+  src: local("Poppins"), url(./fonts/Raleway-Medium.ttf);
+}

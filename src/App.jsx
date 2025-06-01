@@ -1,21 +1,21 @@
 import {useEffect, useState} from 'react'
 import Input from "./Input.jsx";
+import TaskItem from "./TaskItem.jsx";
+import TaskList from "./TaskList.jsx";
 
 function App() {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(JSON.parse(localStorage.getItem('list')));
   function removeItem (id) {
     setList(prevlist => prevlist.filter(el => el.id !== id))
   }
+  useEffect(() => {
+    localStorage.setItem('list', JSON.stringify(list));
+  },[list]);
+
   return (
     <>
       <Input list={list} setList={setList} />
-      <ul>
-      {list.map((item) => (
-          <li key={item.id}>{item.text}
-            <button onClick={() => removeItem(item.id)}>Удалить</button>
-          </li>
-      ))}
-      </ul>
+      <TaskList list={list} removeItem={removeItem} />
     </>
   )
 }

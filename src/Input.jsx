@@ -1,9 +1,11 @@
 import {useState} from "react";
 
-let nextId = 0;
+let nextId = localStorage.list.length;
 
 export default function Input({list, setList}) {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("Your To-Do task");
+  const [isImportant, setIsImportant] = useState(false);
+  console.log(isImportant);
   function submit(evt){
     evt.preventDefault()
     setList([
@@ -11,9 +13,11 @@ export default function Input({list, setList}) {
       {
         id: nextId++,
         text: value,
+        important: isImportant,
       }
     ])
-    setValue('')
+    setValue('Your To-Do task');
+    setIsImportant(false)
   }
   return (
       <form>
@@ -26,7 +30,10 @@ export default function Input({list, setList}) {
           maxLength={30}
           value={value}
           onChange={(e)=>setValue(e.target.value)}
+          placeholder="fdsfds"
+          onFocus={() => setValue('')}
         />
+        <input type="checkbox" value={isImportant} onChange={()=>setIsImportant(true)} checked={isImportant}></input>
         <button type="submit" onClick={evt=>submit(evt)}>Submit</button>
       </form>
   )
