@@ -1,0 +1,30 @@
+.task-list__item{
+  font-family: Raleway, sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 20px;
+  color: #35383e;
+  background: rgba(53, 56, 62, 0.05);
+  border-radius: 22px;
+  padding: 15px;
+  width: 510px;
+}
+
+.task-list__item_not-important{
+  justify-content: start;
+}
+
+.task-list__text{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.task-list__btn{
+  height: 35px;
+}

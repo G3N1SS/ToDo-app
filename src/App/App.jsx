@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react'
-import Input from "./Input.jsx";
-import TaskItem from "./TaskItem.jsx";
-import TaskList from "./TaskList.jsx";
+import Input from "../Input/Input.jsx";
+import TaskList from "../TaskList/TaskList.jsx";
+import './app.css'
 
 function App() {
   const [list, setList] = useState(JSON.parse(localStorage.getItem('list')));
@@ -13,10 +13,10 @@ function App() {
   },[list]);
 
   return (
-    <>
+    <main className='page'>
       <Input list={list} setList={setList} />
       <TaskList list={list} removeItem={removeItem} />
-    </>
+    </main>
   )
 }
 
