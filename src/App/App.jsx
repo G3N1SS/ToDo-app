@@ -15,7 +15,7 @@ function App() {
   return (
     <main className="page">
       <Input list={list} setList={setList} />
-      <TaskList list={list} removeItem={removeItem} />
+      <TaskList list={list} removeItem={removeItem} setList={setList} />
     </main>
   );
 }

@@ -6,11 +6,6 @@ export default function TaskItem({ item, removeItem }) {
   const [completed, setCompleted] = useState(item.completed || false);
   const [completedHover, setCompletedHover] = useState(false);
 
-  useEffect(() => {
-    item.completed = completed;
-    item.active = !completed;
-  }, [completed]);
-
   function toggleCompleted() {
     setCompleted(!completed);
   }

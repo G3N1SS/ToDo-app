@@ -2,8 +2,16 @@ import { useState } from 'react';
 import TaskItem from '../TaskItem/TaskItem.jsx';
 import './tasklist.css';
 
-export default function TaskList({ list, removeItem }) {
+export default function TaskList({ list, removeItem, setList }) {
   const [filter, setFilter] = useState('all');
+
+  function toggleCompleted(id) {
+    setList((list) =>
+      list.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  }
   return (
     <>
       <div className="filter">
@@ -35,18 +43,38 @@ export default function TaskList({ list, removeItem }) {
       <ul className={'task-list'}>
         {list.map((item) =>
           filter === 'all' ? (
-            <TaskItem key={item.id} item={item} removeItem={removeItem} />
+            <TaskItem
+              key={item.id}
+              item={item}
+              removeItem={removeItem}
+              onToggleCompleted={toggleCompleted}
+            />
           ) : filter === 'completed' ? (
             item.completed && (
-              <TaskItem key={item.id} item={item} removeItem={removeItem} />
+              <TaskItem
+                key={item.id}
+                item={item}
+                removeItem={removeItem}
+                onToggleCompleted={toggleCompleted}
+              />
             )
           ) : filter === 'important' ? (
             item.important && (
-              <TaskItem key={item.id} item={item} removeItem={removeItem} />
+              <TaskItem
+                key={item.id}
+                item={item}
+                removeItem={removeItem}
+                onToggleCompleted={toggleCompleted}
+              />
             )
           ) : filter === 'active' ? (
             item.active && (
-              <TaskItem key={item.id} item={item} removeItem={removeItem} />
+              <TaskItem
+                key={item.id}
+                item={item}
+                removeItem={removeItem}
+                onToggleCompleted={toggleCompleted}
+              />
             )
           ) : (
             ''
