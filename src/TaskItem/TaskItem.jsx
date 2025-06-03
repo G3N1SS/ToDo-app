@@ -3,7 +3,6 @@ import './taskitem.css';
 
 export default function TaskItem({ item, removeItem, onToggleCompleted }) {
   const [color, setColor] = useState('#35383E');
-  const [completed, setCompleted] = useState(item.completed || false);
   const [completedHover, setCompletedHover] = useState(false);
 
   return (
