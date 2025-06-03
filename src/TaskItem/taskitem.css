@@ -13,9 +13,18 @@
   width: 510px;
 }
 
-.task-list__item_not-important{
-  justify-content: start;
+.task-list__item_completed{
+  background: rgba(0, 205, 45, 0.1);
 }
+
+.task-list__btns{
+  display: flex;
+  gap: 10px
+}
+
+/*.task-list__item_not-important{*/
+/*  justify-content: start;*/
+/*}*/
 
 .task-list__text{
   display: flex;

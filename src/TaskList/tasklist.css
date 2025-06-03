@@ -3,3 +3,17 @@
   gap: 10px;
   flex-direction: column;
 }
+
+.filter{
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+
+.filter__btn{
+  width: 24%;
+  border-radius: 15px;
+  background-color: rgba(129, 129, 129, 0.2);
+  padding: 5px 0;
+}
