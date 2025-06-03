@@ -4,7 +4,9 @@ import TaskList from '../TaskList/TaskList.jsx';
 import './app.css';
 
 function App() {
-  const [list, setList] = useState(JSON.parse(localStorage.getItem('list')));
+  const [list, setList] = useState(
+    JSON.parse(localStorage.getItem('list')) || []
+  );
   function removeItem(id) {
     setList((prevlist) => prevlist.filter((el) => el.id !== id));
   }
