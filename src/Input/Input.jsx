@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './input.css';
 
-let nextId = JSON.parse(localStorage.getItem('list') || '[]').length || 0;
+let nextId = JSON.parse(localStorage.getItem('list') || '[]').length;
 
 export default function Input({ list, setList }) {
   const [value, setValue] = useState('');
