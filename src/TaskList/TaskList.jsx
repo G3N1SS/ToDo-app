@@ -6,11 +6,11 @@ export default function TaskList({ list, removeItem, setList }) {
   const [filter, setFilter] = useState('all');
 
   function toggleCompleted(id) {
-    setList((list) =>
-      list.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
+    const updatedTasks = list.map((task) =>
+      task.id === id ? { ...task, completed: !task.completed } : task
     );
+    setList(updatedTasks);
+    localStorage.setItem('list', JSON.stringify(updatedTasks));
   }
   return (
     <>

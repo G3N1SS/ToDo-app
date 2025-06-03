@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import './taskitem.css';
 
-export default function TaskItem({ item, removeItem }) {
+export default function TaskItem({ item, removeItem, onToggleCompleted }) {
   const [color, setColor] = useState('#35383E');
   const [completed, setCompleted] = useState(item.completed || false);
   const [completedHover, setCompletedHover] = useState(false);
 
-  function toggleCompleted() {
-    setCompleted(!completed);
-  }
   return (
     <li
       className={`task-list__item ${!item.important && 'task-list__item_not-important'} ${item.completed && 'task-list__item_completed'}`}
@@ -37,7 +34,7 @@ export default function TaskItem({ item, removeItem }) {
           className="task-list__btn"
           onMouseEnter={() => setCompletedHover(true)}
           onMouseLeave={() => setCompletedHover(false)}
-          onClick={() => toggleCompleted()}
+          onClick={() => onToggleCompleted(item.id)}
         >
           <svg
             width="35"
