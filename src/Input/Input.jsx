@@ -17,7 +17,6 @@ export default function Input({ list, setList }) {
         text: value,
         important: isImportant,
         completed: false,
-        active: true,
       },
     ]);
     setValue('');

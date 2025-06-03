@@ -7,9 +7,7 @@ export default function TaskList({ list, removeItem, setList }) {
 
   function toggleCompleted(id) {
     const updatedTasks = list.map((task) =>
-      task.id === id
-        ? { ...task, completed: !task.completed, active: !task.active }
-        : task
+      task.id === id ? { ...task, completed: !task.completed } : task
     );
     setList(updatedTasks);
     localStorage.setItem('list', JSON.stringify(updatedTasks));
@@ -70,7 +68,7 @@ export default function TaskList({ list, removeItem, setList }) {
               />
             )
           ) : filter === 'active' ? (
-            item.active && (
+            !item.completed && (
               <TaskItem
                 key={item.id}
                 item={item}
