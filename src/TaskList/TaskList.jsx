@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import TaskItem from '../TaskItem/TaskItem.jsx';
 import './tasklist.css';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 
 export default function TaskList({ list, removeItem, setList }) {
   const [filter, setFilter] = useState('all');
@@ -11,6 +12,14 @@ export default function TaskList({ list, removeItem, setList }) {
     else if (filter === 'completed') return item.completed;
     else if (filter === 'important') return item.important;
   });
+
+  function handleDragEnd(result) {
+    if (!result.destination) return;
+    const newList = Array.from(list);
+    const [movedItem] = newList.splice(result.source.index, 1);
+    newList.splice(result.destination.index, 0, movedItem);
+    setList(newList);
+  }
 
   function toggleCompleted(id) {
     const updatedTasks = list.map((task) =>
@@ -47,16 +56,40 @@ export default function TaskList({ list, removeItem, setList }) {
         </button>
       </div>
       {filteredList.length >= 1 ? (
-        <ul className="task-list">
-          {filteredList.map((item) => (
-            <TaskItem
-              key={item.id}
-              item={item}
-              removeItem={removeItem}
-              onToggleCompleted={toggleCompleted}
-            />
-          ))}
-        </ul>
+        <DragDropContext onDragEnd={handleDragEnd}>
+          <Droppable droppableId="tasks">
+            {(provided) => (
+              <ul
+                className="task-list"
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {filteredList.map((item, index) => (
+                  <Draggable
+                    key={item.id}
+                    draggableId={item.id.toString()}
+                    index={index}
+                  >
+                    {(provided) => (
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <TaskItem
+                          item={item}
+                          removeItem={removeItem}
+                          onToggleCompleted={toggleCompleted}
+                        />
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       ) : (
         <h2 className={'task-list__title'}>
           Здесь будут отображаться ваши задачи!
