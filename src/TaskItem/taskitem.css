@@ -19,7 +19,8 @@
 
 .task-list__btns{
   display: flex;
-  gap: 10px
+  gap: 10px;
+  margin: 0;
 }
 
 /*.task-list__item_not-important{*/
@@ -36,4 +37,28 @@
 
 .task-list__btn{
   height: 35px;
+  width: 35px;
+}
+
+@media (max-width: 768px) {
+  .task-list__item {
+    width: 80vw;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(16px, 4vw, 20px);
+    padding: 12px;
+  }
+  .task-list__btn{
+    height: 25px;
+    width: 30px;
+  }
+  .task-list__text{
+    font-size: 18px;
+  }
+  .task-list__text{
+    gap: 0px;
+  }
+  .task-list__text-content{
+    width: 100%;
+  }
 }

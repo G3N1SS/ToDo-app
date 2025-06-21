@@ -4,15 +4,19 @@ import TaskList from '../TaskList/TaskList.jsx';
 import './app.css';
 
 function App() {
-  const [list, setList] = useState(
-    JSON.parse(localStorage.getItem('list')) || []
-  );
+  const [list, setList] = useState([]);
+
   function removeItem(id) {
     setList((prevlist) => prevlist.filter((el) => el.id !== id));
   }
-  useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list));
-  }, [list, { list }]);
+
+  async function loadTasksFromServer() {
+    // TODO: fetch tasks from server
+  }
+
+  async function saveTasksToServer(updatedList) {
+    // TODO: send data to server
+  }
 
   return (
     <main className="page">

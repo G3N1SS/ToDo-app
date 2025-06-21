@@ -75,7 +75,7 @@ export default function TaskItem({ item, removeItem, onToggleCompleted }) {
         </button>
       </div>
       <div className={'task-list__text'}>
-        {item.text}
+        <p className="task-list__text-content">{item.text}</p>
         {/*Кнопка удаления*/}
         <button
           onClick={() => removeItem(item.id)}

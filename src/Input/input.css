@@ -17,3 +17,20 @@
 .form__button_disabled{
   cursor: not-allowed;
 }
+
+@media(max-width: 768px){
+  .input{
+    font-size: clamp(20px,5vw,40px);
+    width: 70vw;
+  }
+  .form__button{
+    height: 25px;
+    width: 25px;
+  }
+}
+
+@media(max-width: 500px){
+  .input{
+    width: 59vw;
+  }
+}
